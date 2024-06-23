@@ -1,18 +1,22 @@
 import { RedGin, propReflect, html, watch, event } from 'redgin';
 
 export default class Binding extends RedGin {
-  value1 = propReflect<string>('John Doe');
+  value = propReflect<string>('John Doe');
 
-  static observedAttributes = ['value1'];
+  static observedAttributes = ['value'];
 
   render() {
     return html`
-      <input 
-        type="text"
-        ${event('input', (e: any) => this.value1 = e.target.value)} 
-      >
 
-      Hello ${watch(['value1'], () => this.value1)}
+    
+        <input 
+          type="text"
+          ${event('input', (e: any) => this.value = e.target.value)} 
+        >
+
+       <h1>Hello ${watch(['value'], () => this.value )} !</h1>
+
+     
       
     `;
   }
