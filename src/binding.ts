@@ -10,10 +10,6 @@ export default class Binding extends RedGin {
     if(this.shadowRoot.querySelector('input')) this.shadowRoot.querySelector('input').value = this.value;   
   }
 
-  changeValue(val: string ): void {
-    this.value = val;
-  }
-
   render() {
     return html`
       <input 
@@ -22,7 +18,7 @@ export default class Binding extends RedGin {
       >
 
       <button
-        ${event('click', () => this.changeValue('John Wick') )}
+        ${event('click', () => this.value = 'John Wick' )}
       >Change to John Wick</button>
 
       <h1>Hello ${watch(['value'], () => this.value )} !</h1>
