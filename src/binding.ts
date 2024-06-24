@@ -17,6 +17,7 @@ export default class Binding extends RedGin {
         ${event('input', (e: any) => this.value = e.target.value )} 
       >
 
+      
       <button
         ${event('click', () => this.value = 'John Wick' )}
       >Change to John Wick</button>
@@ -28,6 +29,8 @@ export default class Binding extends RedGin {
 
 }
 
+
+// document.querySelector('sample-binding').value = 'John Wick' will also trigger update
 customElements.define('sample-binding', Binding);
 
 declare global {
