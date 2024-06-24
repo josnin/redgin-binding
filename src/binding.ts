@@ -29,8 +29,9 @@ export default class Binding extends RedGin {
 
 }
 
+// below will also trigger update
+// document.querySelector('sample-binding').value = 'John Wick'
 
-// document.querySelector('sample-binding').value = 'John Wick' will also trigger update
 customElements.define('sample-binding', Binding);
 
 declare global {
