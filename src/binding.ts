@@ -5,21 +5,31 @@ export default class Binding extends RedGin {
 
   static observedAttributes = ['value'];
 
+  onUpdated(): void {
+    // @ts-ignore
+    if(this.shadowRoot.querySelector('input')) this.shadowRoot.querySelector('input').value = this.value;   
+  }
+
+  changeValue(val: string ): void {
+    this.value = val;
+  }
+
   render() {
     return html`
+      <input 
+        type="text"
+        ${event('input', (e: any) => this.value = e.target.value )} 
+      >
 
-    
-        <input 
-          type="text"
-          ${event('input', (e: any) => this.value = e.target.value)} 
-        >
+      <button
+        ${event('click', () => this.changeValue('John Wick') )}
+      >Change to John Wick</button>
 
-       <h1>Hello ${watch(['value'], () => this.value )} !</h1>
+      <h1>Hello ${watch(['value'], () => this.value )} !</h1>
 
-     
-      
     `;
   }
+
 }
 
 customElements.define('sample-binding', Binding);
