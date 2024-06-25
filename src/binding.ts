@@ -6,17 +6,10 @@ export default class Binding extends RedGin {
   // Define observed attributes
   static observedAttributes = ['value'];
 
-  // Method to update input element value
-  private updateInputElementValue(): void {
-    const inputElement = this.shadowRoot?.querySelector<HTMLInputElement>('input');
-    if (inputElement) {
-      inputElement.value = this.value;
-    }
-  }
-
   // Lifecycle hook for when component updates
   onUpdated(): void {
-    this.updateInputElementValue();
+    const inputElement = this.shadowRoot?.querySelector<HTMLInputElement>('input');
+    if (inputElement) inputElement.value = this.value;
   }
 
   // Render method using html template literals
